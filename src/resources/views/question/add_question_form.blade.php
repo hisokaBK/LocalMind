@@ -84,7 +84,7 @@
       <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white brick-shadow">
       <span class="material-symbols-outlined text-2xl">extension</span>
       </div>
-      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight">BRICKASK</h2>
+      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight"> LEGO Q&amp;A </h2>
       </div>
       <nav class="hidden md:flex items-center gap-4">
       <a class="px-4 py-2 bg-lego-yellow text-black text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/">Home</a>
@@ -157,10 +157,11 @@
 <div class="relative">
 <select required name='location' class="form-input w-full rounded-xl text-[#181111] focus:ring-4 focus:ring-lego-yellow/20 border-2 border-gray-200 bg-gray-50 h-16 appearance-none px-6 text-lg font-medium leading-normal">
 <option value="">Select a City Region</option>
-<option value="lego-city">Lego City Center</option>
-<option value="technic-town">Technic Town</option>
-<option value="duplo-valley">Duplo Valley</option>
-<option value="bionicle-bay">Bionicle Bay</option>
+<option value="Casablanca">Casablanca</option>
+<option value="Fas">Fas</option>
+<option value="Meknes">Meknes</option>
+<option value="Rabat">Rabat</option>
+<option value="Marakech">Marakech</option>
 </select>
 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
 <span class="material-symbols-outlined">expand_more</span>
@@ -190,7 +191,8 @@
 <span class="text-lego-yellow">Powered by</span>
 <span class="text-primary">Bilal Bakessou</span>
 <span class="w-1 h-1 bg-white rounded-full"></span>
-<span>. YouCode 2026</span>
+<span>© 2026 Bakessou bilal . Youcode 
+</span>
 </div>
 </main>
 </div>

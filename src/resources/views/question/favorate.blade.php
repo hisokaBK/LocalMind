@@ -111,39 +111,42 @@
 <div class="lego-gradient min-h-screen">
 <div class="star-field"></div>
 <!-- TopNavBar -->
-<header class="relative z-10 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#181811]/10 px-6 lg:px-40 py-4 bg-white/70 backdrop-blur-md">
-<div class="flex items-center gap-8">
-<div class="flex items-center gap-3 text-[#181811]">
-<div class="bg-primary p-1.5 rounded-lg shadow-[2px_2px_0px_#000]">
-<span class="material-symbols-outlined text-black font-bold">extension</span>
-</div>
-<h2 class="text-[#181811] text-xl font-extrabold leading-tight tracking-[-0.015em]">BrickAsk</h2>
-</div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-[#181811] text-sm font-bold uppercase tracking-wider hover:text-lego-blue transition-colors" href="#">Home</a>
-<a class="text-[#181811] text-sm font-bold uppercase tracking-wider hover:text-lego-blue transition-colors" href="#">Explore</a>
-<a class="text-[#181811] text-sm font-bold uppercase tracking-wider text-lego-blue border-b-2 border-lego-blue" href="#">Favorites</a>
-<a class="text-[#181811] text-sm font-bold uppercase tracking-wider hover:text-lego-blue transition-colors" href="#">Community</a>
-</nav>
-</div>
-<div class="flex flex-1 justify-end gap-4 items-center">
-<label class="hidden lg:flex flex-col min-w-40 h-10 max-w-64">
-<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border-2 border-black">
-<div class="text-black flex bg-white items-center justify-center pl-3">
-<span class="material-symbols-outlined text-xl">search</span>
-</div>
-<input class="form-input flex w-full min-w-0 flex-1 border-none bg-white focus:ring-0 h-full placeholder:text-gray-500 px-3 text-sm font-bold" placeholder="Find bricks..." value=""/>
-</div>
-</label>
-<div class="flex gap-2">
-<button class="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-white border-2 border-black hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-black">notifications</span>
-</button>
-<div class="size-10 rounded-full border-2 border-black bg-center bg-no-repeat bg-cover" data-alt="User profile avatar circular" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5dK1SR0jwGPYdcKuotX_2O455q_8kmXw9gyFQU0IxtrPx67r2iP0UO5wt90iHny4hDEReeCVj69xxZtgo96-QE3E9bgptBWDJoR50CUPo4zfQNJQZEojiFRfadqNjd-2oNX8elgWAMD5N9p-xfmZsWJFWAoFnbXlBkmPDR3TbNQb1J2j9VWo1z3LrzHkp2MLM1lupUsYBIpGuiLhWyHRlfb-98A405rpikm3WO5WG41LQ-jTDJIPRyAbOjX0h50yNVuaoCKTTu64");'></div>
-</div>
-</div>
+<div class="px-4 md:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+ <header class="flex items-center justify-between whitespace-nowrap border-b-4 border-solid border-[#e6dbdb] bg-white rounded-xl px-10 py-4 brick-shadow">
+      <div class="flex items-center gap-8">
+      <div class="flex items-center gap-3 text-primary">
+      <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white brick-shadow">
+      <span class="material-symbols-outlined text-2xl">extension</span>
+      </div>
+      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight"> LEGO Q&amp;A</h2>
+      </div>
+      <nav class="hidden md:flex items-center gap-4">
+      <a class="px-4 py-2 bg-lego-yellow text-black text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/">Home</a>
+      <a class="px-4 py-2 bg-lego-blue text-white text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/questions">Browse</a>
+     
+       @if (Auth::check())
+      <a class="px-4 py-2 bg-lego-green text-white text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/favorite">Favorite</a>
+      @endif
+
+      </nav>
+      </div>
+      <div class="flex flex-1 justify-end gap-6 items-center">
+      @if (!Auth::check())
+          <a href="/login" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-11 px-5 bg-primary text-white text-sm font-black uppercase tracking-wider brick-shadow brick-active">
+           <span class="truncate">Login</span>
+          </a>
+      @else
+          <a href="/logout" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-11 px-5 bg-primary text-white text-sm font-black uppercase tracking-wider brick-shadow brick-active">
+              <span class="truncate">Log Out</span>
+          </a>
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-11 border-4 border-lego-yellow" data-alt="User avatar profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBxIwoA8ZVrjVVm5rjltqnuMNQ5_iYN1JLEzNUFe4UzppOqsE9MtLlWH8Vkh7gWkc4YcSYWVoeMzGpWverga23H4ZBtuE4iDr_nfFV3cbV9HXl3YZIj4RI6dmtO0EP6ARzzHQG8h9RAyfHtj9ialgqCoi0npd8kX251ALoFc2gEAu6aOTYF1Bp3f9f3EYtSzKZE532q4t4XDpQVLppVZBbx-E7HyHCok8TR3onJbkecBIOgvbj421ngMK0rVT_LShdFlmrF7Uisd6o");'></div>
+          </div>
+      @endif
 </header>
-<main class="relative z-10 px-6 lg:px-40 py-12">
+</div></div>
+ 
+ <main class="relative z-10 px-6 lg:px-40 py-12">
 <!-- 3D Brick Header Section -->
 <div class="flex flex-col items-center mb-12">
 <div class="flex flex-wrap justify-center mb-4">
@@ -160,21 +163,12 @@
 <div class="brick-letter bg-lego-blue">E</div>
 <div class="brick-letter bg-lego-green">S</div>
 </div>
-<p class="text-slate-600 text-lg font-bold bg-white/50 px-4 py-1 rounded-full border border-slate-300">You have 12 items in your collection</p>
+<p class="text-slate-600 text-lg font-bold bg-white/50 px-4 py-1 rounded-full border border-slate-300">You have <span class="text-red-500/75">{{ $user->favorates_count }} </span>items in your collection</p>
 </div>
 <!-- Filter Chips -->
 <div class="flex gap-3 mb-8 justify-center flex-wrap">
 <div class="flex h-10 items-center justify-center rounded-lg bg-primary border-2 border-black px-6 shadow-[3px_3px_0px_#000] cursor-pointer">
 <p class="text-black text-sm font-bold uppercase tracking-tight">All Bricks</p>
-</div>
-<div class="flex h-10 items-center justify-center rounded-lg bg-white border-2 border-black px-6 shadow-[3px_3px_0px_#000] cursor-pointer hover:bg-gray-100 transition-all">
-<p class="text-black text-sm font-bold uppercase tracking-tight">Questions</p>
-</div>
-<div class="flex h-10 items-center justify-center rounded-lg bg-white border-2 border-black px-6 shadow-[3px_3px_0px_#000] cursor-pointer hover:bg-gray-100 transition-all">
-<p class="text-black text-sm font-bold uppercase tracking-tight">Answers</p>
-</div>
-<div class="flex h-10 items-center justify-center rounded-lg bg-white border-2 border-black px-6 shadow-[3px_3px_0px_#000] cursor-pointer hover:bg-gray-100 transition-all">
-<p class="text-black text-sm font-bold uppercase tracking-tight">Tutorials</p>
 </div>
 </div>
 <!-- Favorites Grid -->
@@ -187,137 +181,54 @@
 <div class="stud bg-lego-red"></div>
 <div class="stud bg-lego-red"></div>
 </div>
-<div class="absolute -top-4 -right-4 size-10 bg-primary border-2 border-black rounded-full flex items-center justify-center shadow-md">
-<span class="material-symbols-outlined text-black font-bold text-xl" style="font-variation-settings: 'FILL' 1">star</span>
-</div>
-<div class="w-full h-48 bg-gray-100 rounded-lg mb-4 bg-center bg-cover border border-slate-200" data-alt="Modern modular spaceship construction build" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIcPTeMP-TV_y-tQJzjQ5zPyqO0iAU9A6FJ2TLdkbGxuj1PYWIlJa1JaceY2tAwNut3fBmgewAlGGZzd7kf29i81QFpDBpqOQE7E5H0F3Dr5_b9lMq095H9RxGDKq-3o0zimOL_DRwluAWYdmcYR-PbbhxTDbSmqxa3S-p4bowV7BTpvs1ZUveMHcxUUyOdJXhoTs2geJDS80VxhCYrAaKArS21NKBPSSd-KztPU8B2Rarnc1XzBONY13C0zX8N7jq6z3cQItaEBo");'></div>
+<form action="{{ route('questions.favorite', $question->id) }}" method="POST">
+    @csrf
+
+<button class="absolute -top-4 -right-4 size-10 bg-primary border-2 border-black rounded-full flex items-center justify-center shadow-md hover:bg-red-500 hover:cursor-pointer">
+<span class="material-symbols-outlined text-black font-bold text-xl" style="font-variation-settings: 'FILL' 1">remove</span>
+</button>
+</form>
 <div class="flex flex-col flex-1">
+    <div class="w-full h-48 bg-gray-100 rounded-lg mb-4 bg-center bg-cover border border-slate-200" data-alt="Close up of SNOT building technique bricks" style='background-image: url("../../assets/image.jpg");'></div>
 <div class="flex items-center gap-2 mb-2">
-<span class="bg-lego-red text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">Tutorial</span>
+<span class="bg-lego-red text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">Q</span>
 <div class="flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-sm border border-slate-200">
 <span class="material-symbols-outlined text-xs">location_on</span>
-<span class="text-[10px] font-bold text-slate-600">Earth</span>
+<span class="text-[10px] font-bold text-slate-600">{{$question->location}}</span>
 </div>
 </div>
-<h3 class="text-black text-xl font-extrabold leading-tight mb-2">How to build a modular spaceship?</h3>
-<p class="text-slate-600 text-sm font-medium leading-relaxed mb-6">Learn the basics of modular design for intergalactic travel with easy snap-on components.</p>
+<h3 class="text-black text-xl font-extrabold leading-tight mb-2">{{$question->user->name}}</h3>
+<p class="text-slate-600 text-sm font-medium leading-relaxed mb-6">{{$question->content}}</p>
 <div class="mt-auto flex gap-2">
 <div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
 <span class="material-symbols-outlined text-sm font-bold">thumb_up</span>
-<span class="text-xs font-black">1.2k</span>
+<span class="text-xs font-black">{{$question->likes_count}}</span>
 </div>
 <div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
 <span class="material-symbols-outlined text-sm font-bold">chat_bubble</span>
-<span class="text-xs font-black">84</span>
+<span class="text-xs font-black">{{$question->responses_count}}</span>
 </div>
 </div>
 </div>
 </div>
 @endforeach
-<!-- Card 2 (Blue) -->
-<div class="lego-card relative flex flex-col bg-white border-[4px] border-lego-blue rounded-lg p-6">
-<div class="stud-overlay">
-<div class="stud bg-lego-blue"></div>
-<div class="stud bg-lego-blue"></div>
-<div class="stud bg-lego-blue"></div>
-</div>
-<div class="absolute -top-4 -right-4 size-10 bg-primary border-2 border-black rounded-full flex items-center justify-center shadow-md">
-<span class="material-symbols-outlined text-black font-bold text-xl" style="font-variation-settings: 'FILL' 1">star</span>
-</div>
-<div class="w-full h-48 bg-gray-100 rounded-lg mb-4 bg-center bg-cover border border-slate-200" data-alt="Close up of SNOT building technique bricks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVIzab1Qt9LKHLTO46tyGbJjp1ymoWHsLAvhoPs5HcMEGjPUpRUlJMnukq-kny1yJVtBWdwrliECP7hFICkBqCyiWf6qqfdCtcZQjDOnNj8L8YxiNr3Q4IIKTjY1HFRdI7yAquGoNSJUttVY2lSoirxYftKdnNbT2vZ_h4dx3LB13uYCrIh4gfzXc_Zn5rOHt0lw0-OQ7D_etHtFdwU6vJfV3k_djU9Zn8Q5cqM8lXhqIEy6zTXMWUOMaH4HbbDWwfMJ0Bya2g9cI");'></div>
-<div class="flex flex-col flex-1">
-<div class="flex items-center gap-2 mb-2">
-<span class="bg-lego-blue text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">Technique</span>
-<div class="flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-sm border border-slate-200">
-<span class="material-symbols-outlined text-xs">location_on</span>
-<span class="text-[10px] font-bold text-slate-600">Moon Base</span>
-</div>
-</div>
-<h3 class="text-black text-xl font-extrabold leading-tight mb-2">Best techniques for SNOT building</h3>
-<p class="text-slate-600 text-sm font-medium leading-relaxed mb-6">Exploring 'Studs Not On Top' for smooth surface finishes and advanced vertical construction.</p>
-<div class="mt-auto flex gap-2">
-<div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
-<span class="material-symbols-outlined text-sm font-bold">thumb_up</span>
-<span class="text-xs font-black">2.5k</span>
-</div>
-<div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
-<span class="material-symbols-outlined text-sm font-bold">chat_bubble</span>
-<span class="text-xs font-black">312</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Card 3 (Green) -->
-<div class="lego-card relative flex flex-col bg-white border-[4px] border-lego-green rounded-lg p-6">
-<div class="stud-overlay">
-<div class="stud bg-lego-green"></div>
-<div class="stud bg-lego-green"></div>
-<div class="stud bg-lego-green"></div>
-</div>
-<div class="absolute -top-4 -right-4 size-10 bg-primary border-2 border-black rounded-full flex items-center justify-center shadow-md">
-<span class="material-symbols-outlined text-black font-bold text-xl" style="font-variation-settings: 'FILL' 1">star</span>
-</div>
-<div class="w-full h-48 bg-gray-100 rounded-lg mb-4 bg-center bg-cover border border-slate-200" data-alt="Assortment of translucent neon LEGO bricks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC39bjx3d37VMynXfzNv14ZooMRDPgcJAELrpcDDLVwGyChKYmt1VKZekpt4XqaaygASH8SCAhnBQEtGlLACB4xN705q5Zy30Pwjy5Ce6NTtDaWIISEMSxGFDBpssdWrGB-ybY9OWIC8k6T0NjzbUs4Y5s5_LYhPCLbay3amrA_KAxE0ajAvd9Wg8DN77m9XzUyg-t15S35tPntoU6AVCA0nqou96VoCou60ULUdwgcCq3TD7ASsgsD5uuxxGmIdwmf0KWt9QoKeNw");'></div>
-<div class="flex flex-col flex-1">
-<div class="flex items-center gap-2 mb-2">
-<span class="bg-lego-green text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">Guide</span>
-<div class="flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-sm border border-slate-200">
-<span class="material-symbols-outlined text-xs">location_on</span>
-<span class="text-[10px] font-bold text-slate-600">Mars Colony</span>
-</div>
-</div>
-<h3 class="text-black text-xl font-extrabold leading-tight mb-2">Where to find rare translucent pieces?</h3>
-<p class="text-slate-600 text-sm font-medium leading-relaxed mb-6">A curated list of local vendors and online brick marketplaces for glowing elements.</p>
-<div class="mt-auto flex gap-2">
-<div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
-<span class="material-symbols-outlined text-sm font-bold">thumb_up</span>
-<span class="text-xs font-black">940</span>
-</div>
-<div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
-<span class="material-symbols-outlined text-sm font-bold">chat_bubble</span>
-<span class="text-xs font-black">26</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Card 4 (Yellow) -->
-<div class="lego-card relative flex flex-col bg-white border-[4px] border-lego-yellow rounded-lg p-6">
-<div class="stud-overlay">
-<div class="stud bg-lego-yellow"></div>
-<div class="stud bg-lego-yellow"></div>
-<div class="stud bg-lego-yellow"></div>
-</div>
-<div class="absolute -top-4 -right-4 size-10 bg-primary border-2 border-black rounded-full flex items-center justify-center shadow-md">
-<span class="material-symbols-outlined text-black font-bold text-xl" style="font-variation-settings: 'FILL' 1">star</span>
-</div>
-<div class="w-full h-48 bg-gray-100 rounded-lg mb-4 bg-center bg-cover border border-slate-200" data-alt="Comparison between Technic and System LEGO bricks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCn_5WUXyF5xSRv1RiIGYwNHXSfQR3cGy2sRzgjHYWIbyqdTFzN3a_oW5J7ZwzrmlzCTWinmxmUIcxKn_QdGp9I7HbiJMbbl2tGk6zg4Lu5Und4H1HvdHxqYrZqSccAt7Sq1PxoQdSKAtI6h2M0Z5rVmvwEx8UGYkUmSGE7D2kXVVMfN36aq-2zzmRLTJFtRk2bIVawgVtiFNrur-gwSf22SALEDq3-PhCMvrPxlU6Or7dw3NX7yU8SOkgoucpX_rq9WWl3cJmKGoo");'></div>
-<div class="flex flex-col flex-1">
-<div class="flex items-center gap-2 mb-2">
-<span class="bg-lego-yellow text-black text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">Debate</span>
-<div class="flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-sm border border-slate-200">
-<span class="material-symbols-outlined text-xs">location_on</span>
-<span class="text-[10px] font-bold text-slate-600">Earth</span>
-</div>
-</div>
-<h3 class="text-black text-xl font-extrabold leading-tight mb-2">Technic vs. System: Which is better?</h3>
-<p class="text-slate-600 text-sm font-medium leading-relaxed mb-6">An in-depth look at the structural integrity and aesthetic trade-offs between both systems.</p>
-<div class="mt-auto flex gap-2">
-<div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
-<span class="material-symbols-outlined text-sm font-bold">thumb_up</span>
-<span class="text-xs font-black">5.1k</span>
-</div>
-<div class="flex items-center gap-1.5 bg-slate-50 border-2 border-black px-3 py-1 rounded-lg">
-<span class="material-symbols-outlined text-sm font-bold">chat_bubble</span>
-<span class="text-xs font-black">1.4k</span>
-</div>
-</div>
-</div>
-</div>
 </div>
 </main>
 <!-- Floating Action Button -->
-<button class="fixed bottom-8 right-8 size-16 bg-primary border-4 border-black rounded-xl shadow-[6px_6px_0px_#000] flex items-center justify-center hover:translate-y-[-4px] active:translate-y-[0px] active:shadow-none transition-all z-50">
+<a href="/questions/create" class="fixed bottom-8 right-8 size-16 bg-primary border-4 border-black rounded-xl shadow-[6px_6px_0px_#000] flex items-center justify-center hover:translate-y-[-4px] active:translate-y-[0px] active:shadow-none transition-all z-50">
 <span class="material-symbols-outlined text-black text-3xl font-black">add</span>
-</button>
+</a>
 </div>
+
+<footer class="mt-20 bg-gray-300 dark:bg-zinc-900 stud-pattern py-12 px-4 border-t-8 border-gray-400 dark:border-zinc-800">
+<div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1 rounded shadow-brick">
+<span class="material-symbols-outlined text-white text-xl">extension</span>
+</div>
+<h2 class="text-xl font-800 tracking-tighter uppercase italic">BrickTalk</h2>
+</div>
+<p class="text-xs font-bold text-gray-500 uppercase">© 2026 Bakessou Bilal . Youcode</p>
+</div>
+</footer>
 </body></html>

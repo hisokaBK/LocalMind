@@ -18,6 +18,7 @@
                         "primary": "#ee2b2b",
                         "lego-blue": "#0055ad",
                         "lego-yellow": "#f7d117",
+                         "lego-green": "#00AD43",
                         "background-light": "#f8f6f6",
                         "background-dark": "#221010",
                     },
@@ -58,17 +59,22 @@
 <!-- Top Navigation Bar -->
 <div class="px-4 md:px-40 flex justify-center py-4">
 <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-<header class="flex items-center justify-between whitespace-nowrap border-b-4 border-solid border-[#e6dbdb] bg-white rounded-xl px-10 py-4 brick-shadow">
+ <header class="flex items-center justify-between whitespace-nowrap border-b-4 border-solid border-[#e6dbdb] bg-white rounded-xl px-10 py-4 brick-shadow">
       <div class="flex items-center gap-8">
       <div class="flex items-center gap-3 text-primary">
       <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white brick-shadow">
       <span class="material-symbols-outlined text-2xl">extension</span>
       </div>
-      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight">BRICKASK</h2>
+      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight"> LEGO Q&amp;A</h2>
       </div>
       <nav class="hidden md:flex items-center gap-4">
       <a class="px-4 py-2 bg-lego-yellow text-black text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/">Home</a>
       <a class="px-4 py-2 bg-lego-blue text-white text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/questions">Browse</a>
+     
+       @if (Auth::check())
+      <a class="px-4 py-2 bg-lego-green text-white text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/favorite">Favorite</a>
+      @endif
+
       </nav>
       </div>
       <div class="flex flex-1 justify-end gap-6 items-center">
@@ -83,7 +89,7 @@
           <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-11 border-4 border-lego-yellow" data-alt="User avatar profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBxIwoA8ZVrjVVm5rjltqnuMNQ5_iYN1JLEzNUFe4UzppOqsE9MtLlWH8Vkh7gWkc4YcSYWVoeMzGpWverga23H4ZBtuE4iDr_nfFV3cbV9HXl3YZIj4RI6dmtO0EP6ARzzHQG8h9RAyfHtj9ialgqCoi0npd8kX251ALoFc2gEAu6aOTYF1Bp3f9f3EYtSzKZE532q4t4XDpQVLppVZBbx-E7HyHCok8TR3onJbkecBIOgvbj421ngMK0rVT_LShdFlmrF7Uisd6o");'></div>
           </div>
       @endif
-  </header>
+</header>
  </div>
 </div>
 <main class="flex-1 max-w-[1200px] mx-auto w-full px-0 py-2 mt-8">
@@ -223,13 +229,8 @@
 </div>
 <h2 class="text-xl font-800 tracking-tighter uppercase italic">BrickTalk</h2>
 </div>
-<div class="flex gap-8 text-sm font-black uppercase text-gray-600 dark:text-gray-400">
-<a class="hover:text-primary" href="#">Guidelines</a>
-<a class="hover:text-primary" href="#">Inventory</a>
-<a class="hover:text-primary" href="#">API</a>
-<a class="hover:text-primary" href="#">Privacy</a>
-</div>
-<p class="text-xs font-bold text-gray-500 uppercase">© 2024 Build Your Dreams, One Brick at a Time.</p>
+
+<p class="text-xs font-bold text-gray-500 uppercase">© 2026 Bakessou bilal . Youcode </p>
 </div>
 </footer>
 </body>

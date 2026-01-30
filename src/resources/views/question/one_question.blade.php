@@ -79,7 +79,7 @@
       <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white brick-shadow">
       <span class="material-symbols-outlined text-2xl">extension</span>
       </div>
-      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight">BRICKASK</h2>
+      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight"> LEGO Q&amp;A</h2>
       </div>
       <nav class="hidden md:flex items-center gap-4">
       <a class="px-4 py-2 bg-lego-yellow text-black text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/">Home</a>
@@ -118,6 +118,8 @@
 <div class="flex justify-between items-start gap-4 mb-6">
 <h2 class="text-3xl md:text-4xl font-800 leading-none tracking-tight uppercase">{{$question->title}}</h2>
 
+@if ($question->user->id == Auth::user()->id)
+    
 <div class="flex gap-2 shrink-0">
 <a href="/questions/{{$question->id}}/edit" class="bg-white p-2 rounded shadow-brick hover:translate-y-0.5 hover:shadow-brick-active transition-all" title="Edit">
 <span class="material-symbols-outlined text-lego-yellow">edit</span>
@@ -131,6 +133,8 @@
 </form>
 
 </div>
+@endif
+
 </div>
    <p class="text-xl font-medium leading-relaxed mb-8 opacity-90">
         {{$question->content}}
@@ -207,6 +211,8 @@
 
 </div>
 </div>
+@if ($response->user->id == Auth::user()->id)
+
 <div class="absolute top-3 right-3 flex gap-2">
 
     <a href="{{ route('responses.edit', $response->id) }}"
@@ -227,6 +233,8 @@
     </form>
 
 </div>
+    
+@endif
 
 </div>
 @endforeach
@@ -261,13 +269,7 @@
 </div>
 <h2 class="text-xl font-800 tracking-tighter uppercase italic">BrickTalk</h2>
 </div>
-<div class="flex gap-8 text-sm font-black uppercase text-gray-600 dark:text-gray-400">
-<a class="hover:text-primary" href="#">Guidelines</a>
-<a class="hover:text-primary" href="#">Inventory</a>
-<a class="hover:text-primary" href="#">API</a>
-<a class="hover:text-primary" href="#">Privacy</a>
-</div>
-<p class="text-xs font-bold text-gray-500 uppercase">© 2024 Build Your Dreams, One Brick at a Time.</p>
+<p class="text-xs font-bold text-gray-500 uppercase">© 2026 Bakessou Bilal . Youcode</p>
 </div>
 </footer>
 </body></html>

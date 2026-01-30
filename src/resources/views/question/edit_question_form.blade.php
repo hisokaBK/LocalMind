@@ -83,7 +83,7 @@
       <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white brick-shadow">
       <span class="material-symbols-outlined text-2xl">extension</span>
       </div>
-      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight">BRICKASK</h2>
+      <h2 class="text-[#181111] dark:text-white text-2xl font-black leading-tight tracking-tight"> LEGO Q&amp;A</h2>
       </div>
       <nav class="hidden md:flex items-center gap-4">
       <a class="px-4 py-2 bg-lego-yellow text-black text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/">Home</a>
@@ -102,16 +102,16 @@
           <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-11 border-4 border-lego-yellow" data-alt="User avatar profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBxIwoA8ZVrjVVm5rjltqnuMNQ5_iYN1JLEzNUFe4UzppOqsE9MtLlWH8Vkh7gWkc4YcSYWVoeMzGpWverga23H4ZBtuE4iDr_nfFV3cbV9HXl3YZIj4RI6dmtO0EP6ARzzHQG8h9RAyfHtj9ialgqCoi0npd8kX251ALoFc2gEAu6aOTYF1Bp3f9f3EYtSzKZE532q4t4XDpQVLppVZBbx-E7HyHCok8TR3onJbkecBIOgvbj421ngMK0rVT_LShdFlmrF7Uisd6o");'></div>
           </div>
       @endif
-</header><!-- Main Content -->
+</header>
 <main class="mt-12 mb-20 flex flex-col items-center">
-<!-- Headline -->
+
 <div class="mb-8">
 <h1 class="text-[#181111] dark:text-white tracking-tight text-[40px] font-black leading-tight text-center uppercase">
 <span class="bg-lego-yellow px-4 py-1 rounded-lg brick-shadow inline-block transform -rotate-2 mr-2">Ask</span>
 <span class="inline-block transform rotate-1">a New Question</span>
 </h1>
 </div>
-<!-- Form Container Styled as Stacked Bricks -->
+
 <form action="{{ route('questions.update', $question->id) }}"
       method="POST"
       class="w-full max-w-[700px] flex flex-col gap-0 border-4 border-gray-800 rounded-2xl overflow-hidden brick-shadow bg-gray-800">
@@ -128,7 +128,7 @@
 <div class="size-3 rounded-full bg-gray-200"></div>
 <div class="size-3 rounded-full bg-gray-200"></div>
 </div>
-<!-- Block 1: Title (White Brick) -->
+
 <div class="bg-white p-8 border-b-4 border-gray-100">
 <label class="flex flex-col gap-3">
 <div class="flex items-center gap-2">
@@ -138,7 +138,7 @@
 <input required value="{{$question->title}}" name="title" class="form-input w-full rounded-xl text-[#181111] focus:ring-4 focus:ring-primary/20 border-2 border-gray-200 bg-gray-50 h-16 placeholder:text-[#896161] px-6 text-lg font-medium leading-normal" placeholder="What's on your mind? (e.g. How to build a tower?)" value=""/>
 </label>
 </div>
-<!-- Block 2: Content (Light Grey Brick) -->
+
 <div class="bg-[#f4f0f0] p-8 border-b-4 border-gray-200">
 <label class="flex flex-col gap-3">
 <div class="flex items-center gap-2">
@@ -152,7 +152,7 @@
 
 </label>
 </div>
-<!-- Block 3: Location (White Brick) -->
+
 <div class="bg-white p-8">
 <label class="flex flex-col gap-3">
 <div class="flex items-center gap-2">
@@ -166,6 +166,8 @@
 <option @if ($question->location == 'Fas') selected @endif  value="Fas">Fas</option>
 <option @if ($question->location == 'Meknes') selected @endif  value="Meknes">Meknes</option>
 <option @if ($question->location == 'Rabat') selected @endif  value="Rabat">Rabat</option>
+<option @if ($question->location == 'Marakech') selected @endif  value="Marakech">Marakech</option>
+
 </select>
 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
 <span class="material-symbols-outlined">expand_more</span>
@@ -173,10 +175,10 @@
 </div>
 </label>
 </div>
-<!-- Submit Action (The Green LEGO Brick) -->
+
 <div class="bg-gray-100 p-8 flex justify-center border-t-4 border-gray-200">
 <button type="submit" class="group relative w-full sm:w-auto min-w-[300px] h-20 bg-lego-green rounded-xl brick-shadow brick-active flex flex-col items-center justify-center transition-all">
-<!-- Decorative Studs for the Button -->
+
 <div class="absolute -top-3 left-0 w-full flex justify-around px-8">
 <div class="size-6 bg-green-600 rounded-full border-b-4 border-black/10"></div>
 <div class="size-6 bg-green-600 rounded-full border-b-4 border-black/10"></div>
@@ -192,12 +194,11 @@
 </form>
 
 
-<!-- Footer Badge -->
 <div class="mt-12 flex items-center gap-2 px-6 py-2 bg-gray-800 rounded-full text-white text-xs font-bold uppercase tracking-widest brick-shadow">
 <span class="text-lego-yellow">Powered by</span>
 <span class="text-primary">Bilal Bakessou</span>
 <span class="w-1 h-1 bg-white rounded-full"></span>
-<span>. YouCode 2026</span>
+<span>© 2026 Bakessou bilal . Youcode </span>
 </div>
 </main>
 </div>

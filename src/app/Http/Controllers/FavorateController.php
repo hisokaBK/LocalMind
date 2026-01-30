@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\User;
 use App\Models\Favorate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,7 @@ class FavorateController extends Controller
             $status = 'added';
         }
 
-        return response('/question'.'/'.$question->id);
+        return redirect('/favorite');
     }
 
 
@@ -38,11 +39,13 @@ public function view()
     $questions = Question::whereHas('favorates', function ($query) {
             $query->where('user_id', Auth::id());
         })
-        ->withCount(['responses', 'likes'])
+        ->withCount(['responses', 'likes','favorates'])
         ->latest()
         ->get();
+    $user = User::withCount('favorates')->find(Auth::id());
+     
 
-    return view('question.favorate', compact('questions'));
+    return view('question.favorate', compact('questions','user'));
 }
 
 

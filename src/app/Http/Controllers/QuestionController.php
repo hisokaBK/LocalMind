@@ -44,8 +44,7 @@ class QuestionController extends Controller
             'location'  => $request->location,
         ]);
 
-        return redirect()->route('questions.index')
-            ->with('success', 'Question ajoutée avec succès');
+        return redirect('/questions');
     }
 
     /**

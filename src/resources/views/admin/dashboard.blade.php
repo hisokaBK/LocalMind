@@ -57,7 +57,7 @@
 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 ring-2 ring-primary ring-offset-2" data-alt="Lego character avatar for master builder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAax0UGg-NXFVnp5UMYySlwseLELpjT423TyUYWtGZuvMkX-eDXhDUw1FGoWDXzd780-Jt9SQtpluaG9uve-mgfkKWZsAhjjkfEnpPBqpaBVbS8mkz7HnyhpMzv4lmtI3RlD6n98SDzuLeO2iLAFfpd1mWxU851AiN1rJMwdT5xjjTNgVf8NRXGVi8HZrMCajqBFjDHmz-hQ029MCocRamSabRuWfmxNxSrJLNFewdG6Hq53w1L64jn3GguFsIsQXoBHhEsyzgh9ak");'></div>
 <div class="flex flex-col">
 <h1 class="text-[#181111] dark:text-white text-base font-bold leading-tight">LEGO Admin</h1>
-<p class="text-primary text-xs font-bold uppercase tracking-wider">Master Builder</p>
+<p class="text-primary text-xs font-bold uppercase tracking-wider">{{ Auth::user()->name }}</p>
 </div>
 </div>
 <!-- Nav Items -->
@@ -84,10 +84,10 @@
 </a>
 </nav>
 </div>
-<button class="w-full flex items-center justify-center gap-2 rounded-xl h-12 bg-primary text-white text-sm font-bold shadow-[0_4px_0_0_#b91c1c] active:translate-y-1 active:shadow-none transition-all">
-<span class="material-symbols-outlined">add_box</span>
-<span>New Block</span>
-</button>
+<a href="/logout" class="w-full flex items-center justify-center gap-2 rounded-xl h-12 bg-primary text-white text-sm font-bold shadow-[0_4px_0_0_#b91c1c] active:translate-y-1 active:shadow-none transition-all">
+<span class="material-symbols-outlined">LOG</span>
+<span>out</span>
+</a>
 </div>
 </aside>
 <!-- Main Content Area -->
@@ -98,21 +98,6 @@
 <div class="flex items-center gap-2 text-[#181111] dark:text-white">
 <span class="material-symbols-outlined text-primary">extension</span>
 <h2 class="text-lg font-bold tracking-tight">Brick Control Panel</h2>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<div class="relative flex items-center">
-<span class="material-symbols-outlined absolute left-3 text-gray-400">search</span>
-<input class="pl-10 pr-4 py-2 bg-[#f4f0f0] dark:bg-[#2d1a1a] border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search blocks..." type="text"/>
-</div>
-<div class="flex items-center gap-2 border-l border-gray-200 dark:border-gray-700 pl-6">
-<button class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2 right-2 size-2 bg-primary rounded-full"></span>
-</button>
-<button class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-<span class="material-symbols-outlined">dark_mode</span>
-</button>
 </div>
 </div>
 </header>
@@ -131,7 +116,7 @@
 <p class="text-black font-bold uppercase tracking-wider text-xs">Total Questions</p>
 <span class="material-symbols-outlined text-black/50">help_center</span>
 </div>
-<p class="text-black text-4xl font-extrabold">4</p>
+<p class="text-black text-4xl font-extrabold">{{$totalQuestions}}</p>
 <div class="flex items-center gap-1 text-black/70 font-bold text-sm">
 <span class="material-symbols-outlined text-sm">trending_up</span>
 <span>12% this week</span>
@@ -140,10 +125,10 @@
 <!-- Popular Questions (Red Brick) -->
 <div class="lego-studs bg-primary rounded-xl p-6 shadow-[0_8px_0_0_#b91c1c] flex flex-col gap-2 group transition-transform hover:-translate-y-1">
 <div class="flex justify-between items-start">
-<p class="text-white font-bold uppercase tracking-wider text-xs">Popular Questions</p>
+<p class="text-white font-bold uppercase tracking-wider text-xs">Responses Questions</p>
 <span class="material-symbols-outlined text-white/50">local_fire_department</span>
 </div>
-<p class="text-white text-4xl font-extrabold">2</p>
+<p class="text-white text-4xl font-extrabold">{{$totalResponses}}</p>
 <div class="flex items-center gap-1 text-white/80 font-bold text-sm">
 <span class="material-symbols-outlined text-sm">trending_up</span>
 <span>5% increase</span>
@@ -155,7 +140,7 @@
 <p class="text-white font-bold uppercase tracking-wider text-xs">Active Users</p>
 <span class="material-symbols-outlined text-white/50">person_celebrate</span>
 </div>
-<p class="text-white text-4xl font-extrabold">3</p>
+<p class="text-white text-4xl font-extrabold">{{$totalUsers}}</p>
 <div class="flex items-center gap-1 text-white/80 font-bold text-sm">
 <span class="material-symbols-outlined text-sm">trending_up</span>
 <span>8% from yesterday</span>
@@ -186,120 +171,40 @@
 <th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-500">Name</th>
 <th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-500">Email</th>
 <th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-500">Role</th>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-500">Status</th>
 <th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-500 text-right">Actions</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
 <!-- User 1 -->
+@foreach ($users as $user)
 <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
 <td class="px-6 py-4">
 <div class="flex items-center gap-3">
-<div class="size-10 bg-lego-yellow rounded-lg flex items-center justify-center text-white font-bold" data-alt="User avatar 1">EB</div>
+<div class="size-10 bg-gray-400 rounded-lg flex items-center justify-center text-white font-bold" data-alt="User avatar 2">{{strtoupper(substr($user->name, 0, 2))}}</div>
 <div>
-<p class="text-sm font-bold">Emmet Brickowski</p>
-<p class="text-xs text-gray-500">Joined Oct 2023</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm font-medium">emmet@special.build</td>
-<td class="px-6 py-4">
-<span class="px-2 py-1 rounded bg-lego-blue/10 text-lego-blue text-[10px] font-bold uppercase border border-lego-blue/20">Master Builder</span>
-</td>
-<td class="px-6 py-4">
-<span class="size-2 rounded-full bg-green-500 inline-block mr-2"></span>
-<span class="text-sm">Online</span>
-</td>
-<td class="px-6 py-4 text-right">
-<button class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
-</td>
-</tr>
-<!-- User 2 -->
-<tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold" data-alt="User avatar 2">WS</div>
-<div>
-<p class="text-sm font-bold">Wyldstyle</p>
+<p class="text-sm font-bold">{{$user->name}}</p>
 <p class="text-xs text-gray-500">Joined Sep 2023</p>
 </div>
 </div>
 </td>
-<td class="px-6 py-4 text-sm font-medium">lucy@resistance.org</td>
-<td class="px-6 py-4">
-<span class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase border border-primary/20">Admin</span>
-</td>
-<td class="px-6 py-4">
-<span class="size-2 rounded-full bg-green-500 inline-block mr-2"></span>
-<span class="text-sm">Online</span>
-</td>
+<td class="px-6 py-4 text-sm font-medium">{{$user->email}}</td>
+@if ($user->role =='admin')
+    <td class="px-6 py-4">
+      <span class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase border border-primary/20">Admin</span>
+    </td>
+@else
+    <td class="px-6 py-4">
+       <span class="px-2 py-1 rounded bg-gray-100 text-gray-600 text-[10px] font-bold uppercase border border-gray-200">user</span>
+    </td>
+@endif
 <td class="px-6 py-4 text-right">
 <button class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
 </td>
 </tr>
-<!-- User 3 -->
-<tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="size-10 bg-gray-400 rounded-lg flex items-center justify-center text-white font-bold" data-alt="User avatar 3">BM</div>
-<div>
-<p class="text-sm font-bold">Batman</p>
-<p class="text-xs text-gray-500">Joined Jan 2024</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm font-medium">darkness@gotham.city</td>
-<td class="px-6 py-4">
-<span class="px-2 py-1 rounded bg-gray-100 text-gray-600 text-[10px] font-bold uppercase border border-gray-200">Citizen</span>
-</td>
-<td class="px-6 py-4">
-<span class="size-2 rounded-full bg-gray-400 inline-block mr-2"></span>
-<span class="text-sm text-gray-400">Away</span>
-</td>
-<td class="px-6 py-4 text-right">
-<button class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
-</td>
-</tr>
-<!-- User 4 -->
-<tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="size-10 bg-lego-blue rounded-lg flex items-center justify-center text-white font-bold" data-alt="User avatar 4">BA</div>
-<div>
-<p class="text-sm font-bold">Benny</p>
-<p class="text-xs text-gray-500">Joined Dec 2023</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-4 text-sm font-medium">spaceship@galaxy.net</td>
-<td class="px-6 py-4">
-<span class="px-2 py-1 rounded bg-gray-100 text-gray-600 text-[10px] font-bold uppercase border border-gray-200">Citizen</span>
-</td>
-<td class="px-6 py-4">
-<span class="size-2 rounded-full bg-green-500 inline-block mr-2"></span>
-<span class="text-sm">Online</span>
-</td>
-<td class="px-6 py-4 text-right">
-<button class="text-gray-400 hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
-</td>
-</tr>
+@endforeach
 </tbody>
 </table>
 <!-- Pagination Footer -->
-<div class="px-6 py-4 bg-gray-50 dark:bg-[#2d1a1a] flex items-center justify-between">
-<p class="text-xs font-medium text-gray-500">Showing 4 of 891 citizens</p>
-<div class="flex gap-1">
-<button class="size-8 rounded flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-sm">chevron_left</span>
-</button>
-<button class="size-8 rounded flex items-center justify-center bg-primary text-white font-bold text-xs">1</button>
-<button class="size-8 rounded flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold text-xs hover:border-primary transition-colors">2</button>
-<button class="size-8 rounded flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold text-xs hover:border-primary transition-colors">3</button>
-<button class="size-8 rounded flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-sm">chevron_right</span>
-</button>
-</div>
-</div>
 </div>
 </div>
 <!-- Secondary Section: Recent Activity -->

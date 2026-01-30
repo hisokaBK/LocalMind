@@ -18,7 +18,11 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::get('/dashboard', [AdminController::class, 'showDashboard'])->middleware('auth')
+    ->name('dashboard.index');
+
 
 Route::get('/questions', [QuestionController::class, 'index'])
     ->name('questions.index');
@@ -32,11 +36,11 @@ Route::post('/questions', [QuestionController::class, 'store'])
 Route::get('/questions/{question}', [QuestionController::class, 'show'])
     ->name('questions.show');
 
-Route::get('/questions/{question}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
-Route::put('/questions/{question}', [QuestionController::class, 'update'])->name('questions.update');
+Route::get('/questions/{question}/edit', [QuestionController::class, 'edit'])->middleware('auth')->name('questions.edit');
+Route::put('/questions/{question}', [QuestionController::class, 'update'])->middleware('auth')->name('questions.update');
 
 
-Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])
+Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->middleware('auth')
     ->name('questions.destroy');
 
 
