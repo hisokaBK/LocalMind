@@ -1,0 +1,54 @@
+@startuml
+' Définition des classes principales
+
+class User {
+    - id: int
+    - name: string
+    - email: string
+    - password: string
+    - role: string
+    + register()
+    + login()
+    + logout()
+    + addFavorite()
+    + removeFavorite()
+}
+
+class Question {
+    - id: int
+    - title: string
+    - content: text
+    - location: string
+    - user_id: int
+    - created_at: datetime
+    + create()
+    + update()
+    + delete()
+}
+
+class Response {
+    - id: int
+    - content: text
+    - question_id: int
+    - user_id: int
+    - created_at: datetime
+    + create()
+    + update()
+    + delete()
+}
+
+class Favorite {
+    - id: int
+    - user_id: int
+    - question_id: int
+    + add()
+    + remove()
+}
+
+' Relations
+User "1" -- "*" Question : "publishes"
+Question "1" -- "*" Response : "has"
+User "1" -- "*" Favorite : "marks"
+Question "1" -- "*" Favorite : "is marked in"
+
+@enduml

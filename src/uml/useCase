@@ -1,0 +1,83 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Utilisateur" as User
+actor "Administrateur" as Admin
+
+package "Gestion des comptes" {
+    usecase "S'inscrire" as UC_Register
+    usecase "Se connecter" as UC_Login
+    usecase "Se déconnecter" as UC_Logout
+}
+
+package "Gestion des questions" {
+    usecase "Publier une question" as UC_CreateQuestion
+    usecase "Modifier sa question" as UC_EditQuestion
+    usecase "Supprimer sa question" as UC_DeleteQuestion
+    usecase "Voir les questions" as UC_ViewQuestions
+    usecase "Rechercher une question" as UC_SearchQuestion
+    usecase "Trier les questions par distance" as UC_SortDistance
+}
+
+package "Gestion des réponses" {
+    usecase "Ajouter une réponse" as UC_AddResponse
+    usecase "Voir les réponses" as UC_ViewResponses
+    usecase "Modifier une réponse" as UC_EditResponse
+    usecase "Supprimer une réponse" as UC_DeleteResponse
+}
+
+package "Favoris" {
+    usecase "Ajouter aux favoris" as UC_AddFavorite
+    usecase "Retirer des favoris" as UC_RemoveFavorite
+}
+
+package "Statistiques (optionnel)" {
+    usecase "Voir nombre total de questions" as UC_TotalQuestions
+    usecase "Voir questions populaires" as UC_PopularQuestions
+}
+
+' Relations Utilisateur
+User --> UC_Register
+User --> UC_Login
+User --> UC_Logout
+
+User --> UC_CreateQuestion
+User --> UC_EditQuestion
+User --> UC_DeleteQuestion
+User --> UC_ViewQuestions
+User --> UC_SearchQuestion
+User --> UC_SortDistance
+
+User --> UC_AddResponse
+User --> UC_ViewResponses
+User --> UC_EditResponse
+User --> UC_DeleteResponse
+
+User --> UC_AddFavorite
+User --> UC_RemoveFavorite
+
+User --> UC_TotalQuestions
+User --> UC_PopularQuestions
+
+' Relations Admin (peut tout gérer)
+Admin --> UC_CreateQuestion
+Admin --> UC_EditQuestion
+Admin --> UC_DeleteQuestion
+Admin --> UC_ViewQuestions
+Admin --> UC_SearchQuestion
+Admin --> UC_SortDistance
+
+Admin --> UC_AddResponse
+Admin --> UC_ViewResponses
+Admin --> UC_EditResponse
+Admin --> UC_DeleteResponse
+
+Admin --> UC_AddFavorite
+Admin --> UC_RemoveFavorite
+
+Admin --> UC_TotalQuestions
+Admin --> UC_PopularQuestions
+
+@enduml
+    
