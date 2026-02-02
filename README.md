@@ -100,7 +100,7 @@ src/
 
 1 - Clone le repository :
 
-git clone https://github.com/username/LocalMind.git
+git clone https://github.com/hisokaBK/LocalMind.git
 cd LocalMind
 
 
