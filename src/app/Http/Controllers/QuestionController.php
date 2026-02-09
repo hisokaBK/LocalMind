@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Question;
-   
+
 class QuestionController extends Controller
 {
     /**
@@ -30,7 +30,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-              
+
         $request->validate([
             'title' => 'required|min:5',
             'content'  => 'required|min:15',
@@ -51,9 +51,9 @@ class QuestionController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {     
+    {
        $question = Question::with([
-               'responses.user' 
+               'responses.user'
             ])->withCount(['likes', 'responses'])->findOrFail($id);
 
         return view('question.one_question', compact('question'));
@@ -93,7 +93,7 @@ class QuestionController extends Controller
     ]);
 
     return redirect("/questions");
-       
+
 }
 
 
@@ -101,9 +101,16 @@ class QuestionController extends Controller
      * Remove the specified resource from storage.
      */
  public function destroy(string $id){
-         $question = Question::findOrFail($id);
-        $question->delete();
 
-        return redirect('/questionsr');
+        $question = Question::findOrFail($id);
+
+        if(Auth::user()->id ==$question->user_id ){
+
+             $question->delete();
+             return redirect('/questions');
+         }
+
+        return redirect()->back();
+
     }
 }

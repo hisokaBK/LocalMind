@@ -70,7 +70,7 @@
       <nav class="hidden md:flex items-center gap-4">
       <a class="px-4 py-2 bg-lego-yellow text-black text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/">Home</a>
       <a class="px-4 py-2 bg-lego-blue text-white text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/questions">Browse</a>
-     
+
        @if (Auth::check())
       <a class="px-4 py-2 bg-lego-green text-white text-sm font-bold rounded-lg brick-shadow border-b-2 border-black/10 hover:translate-y-[-2px] transition-transform" href="/favorite">Favorite</a>
       @endif
@@ -123,7 +123,7 @@
 <span class="material-symbols-outlined text-white/50 group-hover:text-white transition-colors">more_horiz</span>
 </div>
 <h3 class="text-white text-xl font-extrabold leading-tight">{{$item->titile}}</h3>
-<p class="text-white/90 text-sm leading-relaxed">
+<p class="text-white/90 text-sm leading-relaxed min-h-[80px]">
   {{$item->content}}
 </p>
 </div>
@@ -161,7 +161,7 @@
 
 @endforeach
 
-<!-- Yellow Question Card 
+<!-- Yellow Question Card
 <div class="flex flex-col bg-lego-yellow rounded-xl overflow-hidden brick-shadow-yellow group transition-transform hover:-translate-y-1">
 <div class="h-4 w-full lego-studs opacity-30"></div>
 <div class="p-5 flex flex-col gap-3">

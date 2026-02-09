@@ -118,7 +118,7 @@
 <div class="flex justify-between items-start gap-4 mb-6">
 <h2 class="text-3xl md:text-4xl font-800 leading-none tracking-tight uppercase">{{$question->title}}</h2>
 
-@if ($question->user->id == Auth::user()->id)
+@if (Auth::check() and $question->user->id == Auth::user()->id)
     
 <div class="flex gap-2 shrink-0">
 <a href="/questions/{{$question->id}}/edit" class="bg-white p-2 rounded shadow-brick hover:translate-y-0.5 hover:shadow-brick-active transition-all" title="Edit">
@@ -211,7 +211,7 @@
 
 </div>
 </div>
-@if ($response->user->id == Auth::user()->id)
+@if (Auth::check() and $response->user->id == Auth::user()->id)
 
 <div class="absolute top-3 right-3 flex gap-2">
 

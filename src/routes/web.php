@@ -23,7 +23,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('/dashboard', [AdminController::class, 'showDashboard'])->middleware('auth')
     ->name('dashboard.index');
 
-
 Route::get('/questions', [QuestionController::class, 'index'])
     ->name('questions.index');
 
@@ -46,7 +45,6 @@ Route::delete('/questions/{question}', [QuestionController::class, 'destroy'])->
 
 Route::get('/one_message',[QuestionController::class , 'showOneMessage']);
 
-
 Route::post('/questions/{id}/like', [LikeController::class, 'toggle'])->middleware('auth')->name('questions.like');
 
 
@@ -55,11 +53,11 @@ Route::middleware('auth')->group(function () {
         ->only(['store', 'edit', 'update', 'destroy']);
 });
 
-Route::post('/questions/{question}/favorite', 
+Route::post('/questions/{question}/favorite',
     [FavorateController::class, 'toggle']
 )->middleware('auth')->name('questions.favorite');
 
-Route::get('/favorite', 
+Route::get('/favorite',
     [FavorateController::class, 'view']
 )->middleware('auth')->name('questions.favorite');
 
